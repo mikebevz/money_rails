@@ -5,28 +5,34 @@ class Money
     end
 
     module ClassMethods
-      def money(method_name, options = {})
-        defaults = {
-          :subunit_column  =>
-            "#{method_name}_#{Money::Rails.config.subunit_column_ext || 'cents'}",
-          :currency_column =>
-            "#{method_name}_#{Money::Rails.config.currency_column_ext || 'currency'}" }
-        options = defaults.merge(options)
+      def money(*method_names_and_options)
+        shared_options = method_names_and_options.extract_options!
 
-        composed_of(method_name,
-          :class_name => "Money",
-          :mapping => [ [options[:subunit_column],  "cents"],
-                        [options[:currency_column], "currency_as_string"] ],
-          :constructor => Proc.new { |cents, currency|
-            Money.new(cents || 0, currency || Money.default_currency)
-          },
-          :converter => Proc.new { |value|
-            if value.respond_to?(:to_money)
-              value.to_money
-            else
-              raise(ArgumentError, "Can't convert #{value.class} to Money")
-            end
-          })
+        method_names_and_options.each do |method_name|
+          defaults = {
+            :allow_nil => false,
+            :subunit_column  =>
+              "#{method_name}_#{Money::Rails.config.subunit_column_ext || 'cents'}",
+            :currency_column =>
+              "#{method_name}_#{Money::Rails.config.currency_column_ext || 'currency'}" }
+          options = defaults.merge(shared_options)
+
+          composed_of(method_name,
+            :class_name => "Money",
+            :mapping => [ [options[:subunit_column],  "cents"],
+                          [options[:currency_column], "currency_as_string"] ],
+            :allow_nil => options[:allow_nil],
+            :constructor => Proc.new { |cents, currency|
+              cents && Money.new(cents || 0, currency || Money.default_currency)
+            },
+            :converter => Proc.new { |value|
+              if value.respond_to?(:to_money)
+                value.to_money
+              else
+                raise(ArgumentError, "Can't convert #{value.class} to Money")
+              end
+            })
+        end
       end
     end
   end
