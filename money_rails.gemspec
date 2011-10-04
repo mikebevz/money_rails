@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/money/rails.rb",
     "lib/money_rails.rb",
-    "money-rails.gemspec",
     "money_rails.gemspec",
     "spec/money_rails_spec.rb",
     "spec/spec_helper.rb"
