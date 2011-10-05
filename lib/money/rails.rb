@@ -23,7 +23,7 @@ class Money
                           [options[:currency_column], "currency_as_string"] ],
             :allow_nil => options[:allow_nil],
             :constructor => Proc.new { |cents, currency|
-              cents && Money.new(cents || 0, currency || Money.default_currency)
+              Money.new(cents || 0, currency || Money.default_currency)
             },
             :converter => Proc.new { |value|
               if value.respond_to?(:to_money)
