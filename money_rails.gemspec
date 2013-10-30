@@ -54,7 +54,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<sqlite3-ruby>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["> 1.2.3"])
     elsif Gem::Version.new(Gem::VERSION) >= Gem::Version.new('2.1.9')
-      s.add_dependency(%q<money>, ["> 5.1.1"])
+      s.add_dependency(%q<money>, ["~> 5.1.1"])
       s.add_dependency(%q<activerecord>, ["~> 4.0"])
       s.add_dependency(%q<activesupport>, ["~> 4.0"])
       s.add_dependency(%q<rspec>, ["~> 2.1.0"])
