@@ -1,8 +1,8 @@
 source "http://rubygems.org"
 
 gem "money", "> 3.7.0"
-gem "activerecord", "~> 3.1"
-gem "activesupport", "~> 3.1"
+gem "activerecord", "~> 4.0"
+gem "activesupport", "~> 4.0"
 
 group :development, :test do
   gem "rspec", "~> 2.1.0"
