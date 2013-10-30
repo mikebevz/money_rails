@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') && Gem::Version.new(Gem::VERSION) < Gem::Version.new('2.1.9') then
       s.add_runtime_dependency(%q<money>, ["> 3.7.0"])
       s.add_runtime_dependency(%q<activerecord>, ["~> 3.1"])
       s.add_runtime_dependency(%q<activesupport>, ["~> 3.1"])
@@ -53,6 +53,15 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_development_dependency(%q<sqlite3-ruby>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["> 1.2.3"])
+    elsif Gem::Version.new(Gem::VERSION) >= Gem::Version.new('2.1.9')
+      s.add_dependency(%q<money>, ["> 5.1.1"])
+      s.add_dependency(%q<activerecord>, ["~> 4.0"])
+      s.add_dependency(%q<activesupport>, ["~> 4.0"])
+      s.add_dependency(%q<rspec>, ["~> 2.1.0"])
+      s.add_dependency(%q<bundler>, ["~> 1.3.5"])
+      s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
+      s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_dependency(%q<rspec>, ["> 1.2.3"])  
     else
       s.add_dependency(%q<money>, ["> 3.7.0"])
       s.add_dependency(%q<activerecord>, ["~> 3.1"])
@@ -64,26 +73,14 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rspec>, ["> 1.2.3"])
     end
   else
-    
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('2.1.9')
-      s.add_dependency(%q<money>, ["> 5.1.1"])
-      s.add_dependency(%q<activerecord>, ["~> 4.0"])
-      s.add_dependency(%q<activesupport>, ["~> 4.0"])
-      s.add_dependency(%q<rspec>, ["~> 2.1.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.3.5"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
-      s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["> 1.2.3"])
-    else      
-      s.add_dependency(%q<money>, ["> 3.7.0"])
-      s.add_dependency(%q<activerecord>, ["~> 3.1"])
-      s.add_dependency(%q<activesupport>, ["~> 3.1"])
-      s.add_dependency(%q<rspec>, ["~> 2.1.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
-      s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["> 1.2.3"])
-    end
+    s.add_dependency(%q<money>, ["> 3.7.0"])
+    s.add_dependency(%q<activerecord>, ["~> 3.1"])
+    s.add_dependency(%q<activesupport>, ["~> 3.1"])
+    s.add_dependency(%q<rspec>, ["~> 2.1.0"])
+    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
+    s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+    s.add_dependency(%q<rspec>, ["> 1.2.3"])
   end
 end
 
