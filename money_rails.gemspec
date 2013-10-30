@@ -61,7 +61,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bundler>, ["~> 1.3.5"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["> 1.2.3"])  
+      #s.add_dependency(%q<rspec>, ["> 1.2.3"])  
     else
       s.add_dependency(%q<money>, ["> 3.7.0"])
       s.add_dependency(%q<activerecord>, ["~> 3.1"])
